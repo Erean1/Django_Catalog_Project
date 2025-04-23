@@ -1,0 +1,15 @@
+# Python
+*.pyc
+__pycache__/
+
+# Virtual environment
+venv/
+
+# Django
+*.log
+*.pot
+*.py[cod]
+*.sqlite3
+
+# .env dosyasını gizlemek için
+.env

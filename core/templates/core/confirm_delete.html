@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Delete {{ object.title }} - Film Catalog{% endblock %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'core/css/confirm_delete.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="delete-confirmation-container">
+    <div class="delete-confirmation-card">
+        <div class="delete-header">
+            <i class="fas fa-exclamation-triangle warning-icon"></i>
+            <h2 class="delete-title">Confirm Deletion</h2>
+        </div>
+        
+        <div class="delete-content">
+            <p class="delete-message">
+                Are you sure you want to delete the film post <strong>"{{ object.title }}"</strong>?
+            </p>
+            
+            {% if object.image %}
+            <div class="film-preview">
+                <img src="{{ object.image.url }}" alt="{{ object.title }} poster" class="film-poster">
+                <div class="film-info">
+                    <p><strong>Director:</strong> {{ object.director|default:"Not specified" }}</p>
+                    <p><strong>Posted on:</strong> {{ object.created_at|date:"F j, Y" }}</p>
+                </div>
+            </div>
+            {% endif %}
+            
+            <p class="delete-warning">
+                <i class="fas fa-exclamation-circle"></i> This action cannot be undone.
+            </p>
+        </div>
+        
+        <form method="post" class="delete-form">
+            {% csrf_token %}
+            <div class="delete-actions">
+                <button type="submit" class="btn btn-delete">
+                    <i class="fas fa-trash-alt"></i> Delete Permanently
+                </button>
+                <a href="{% url 'core:home' %}" class="btn btn-cancel">
+                    <i class="fas fa-times"></i> Cancel
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

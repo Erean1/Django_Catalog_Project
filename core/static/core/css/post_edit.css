@@ -1,0 +1,177 @@
+/* Edit Post Page Styles */
+.edit-post-container {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+.edit-post-card {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+}
+
+.edit-post-title {
+    color: #2c3e50;
+    text-align: center;
+    margin-bottom: 0.5rem;
+}
+
+.edit-post-subtitle {
+    color: #7f8c8d;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.edit-post-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: #2c3e50;
+}
+
+.form-control {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: #e74c3c;
+    box-shadow: 0 0 0 2px rgba(231, 76, 60, 0.1);
+}
+
+.form-control-file {
+    width: 100%;
+    padding: 0.75rem 0;
+}
+
+.form-text {
+    color: #7f8c8d;
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+}
+
+.image-upload-wrapper {
+    margin-top: 0.5rem;
+}
+
+.current-image {
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.current-poster {
+    max-width: 200px;
+    max-height: 300px;
+    border-radius: 4px;
+    margin-bottom: 0.5rem;
+}
+
+.current-image-text {
+    display: block;
+    color: #7f8c8d;
+    font-size: 0.875rem;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.btn {
+    padding: 0.75rem 1.5rem;
+    border-radius: 4px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-decoration: none;
+    border: none;
+}
+
+.btn-save {
+    background-color: #e74c3c;
+    color: white;
+}
+
+.btn-save:hover {
+    background-color: #c0392b;
+}
+
+.btn-cancel {
+    background-color: #f8f9fa;
+    color: #2c3e50;
+    border: 1px solid #ddd;
+}
+
+.btn-cancel:hover {
+    background-color: #e9ecef;
+}
+
+/* Dark Mode Styles */
+.dark-mode .edit-post-card {
+    background-color: #2d2d2d;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.dark-mode .edit-post-title,
+.dark-mode .form-group label {
+    color: #f5f5f5;
+}
+
+.dark-mode .form-control {
+    background-color: #3d3d3d;
+    border-color: #444;
+    color: #f5f5f5;
+}
+
+.dark-mode .form-control:focus {
+    border-color: #e74c3c;
+}
+
+.dark-mode .current-image-text {
+    color: #b0b0b0;
+}
+
+.dark-mode .btn-cancel {
+    background-color: #3d3d3d;
+    border-color: #555;
+    color: #f5f5f5;
+}
+
+.dark-mode .btn-cancel:hover {
+    background-color: #4d4d4d;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .edit-post-card {
+        padding: 1.5rem;
+    }
+    
+    .form-actions {
+        flex-direction: column;
+    }
+    
+    .btn {
+        width: 100%;
+        text-align: center;
+    }
+}

@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Register - Film Catalog{% endblock %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'users/css/register.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="registration-container">
+    <div class="registration-card">
+        <h2 class="registration-title">Create Your Account</h2>
+        <p class="registration-subtitle">Join our film community today</p>
+        
+        <form method="post" class="registration-form">
+            {% csrf_token %}
+            
+            <div class="form-group">
+                <label for="{{ form.username.id_for_label }}">Username</label>
+                {{ form.username }}
+                {% if form.username.errors %}
+                    <div class="error-message">{{ form.username.errors }}</div>
+                {% endif %}
+            </div>
+            
+            <div class="form-group">
+                <label for="{{ form.email.id_for_label }}">Email</label>
+                {{ form.email }}
+                {% if form.email.errors %}
+                    <div class="error-message">{{ form.email.errors }}</div>
+                {% endif %}
+            </div>
+            
+            <div class="form-group">
+                <label for="{{ form.password1.id_for_label }}">Password</label>
+                {{ form.password1 }}
+                {% if form.password1.errors %}
+                    <div class="error-message">{{ form.password1.errors }}</div>
+                {% endif %}
+                <small class="form-text">At least 8 characters with numbers and letters</small>
+            </div>
+            
+            <div class="form-group">
+                <label for="{{ form.password2.id_for_label }}">Confirm Password</label>
+                {{ form.password2 }}
+                {% if form.password2.errors %}
+                    <div class="error-message">{{ form.password2.errors }}</div>
+                {% endif %}
+            </div>
+            
+            <button type="submit" class="btn-register">Register</button>
+        </form>
+        
+        <div class="login-redirect">
+            Already have an account? <a href="{% url 'users:login' %}" class="login-link">Log in here</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

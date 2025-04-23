@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}{{ object.title }} - Film Catalog{% endblock %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'core/css/category_detail.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="category-detail-container">
+    <div class="category-header">
+        <h1 class="category-title">{{ object.title }}</h1>
+        <p class="film-count">{{ films.count }} film{{ films.count|pluralize }} in this category</p>
+        
+        <div class="breadcrumb">
+            <a href="{% url 'core:home' %}">Home</a> &raquo;
+            <span>Category: {{ object.title }}</span>
+        </div>
+    </div>
+
+    {% if films %}
+    <div class="films-grid">
+        {% for film in films %}
+        <div class="film-card">
+            <a href="{% url 'core:post_detail' film.slug %}" class="film-poster">
+                <img src="{{film.image.url}}" alt="{{ film.title }} poster">
+            </a>
+            <div class="film-info">
+                <h3 class="film-title">
+                    <a href="{% url 'core:post_detail' film.slug %}">{{ film.title }}</a>
+                </h3>
+
+                <div class="film-meta">
+                    <span class="film-year">{{ film.release_year }}</span>
+                    <span class="film-rating">
+                        <i class="fas fa-star"></i> {{ film.rating|default:"N/A" }}
+                    </span>
+                </div>
+                <p class="film-description">
+                    {{ film.short_description|truncatewords:20 }}
+                </p>
+
+                <div class="film-actions">
+                    <a href="{% url 'core:post_detail' film.slug %}" class="btn-details">View Details</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <div class="no-films">
+        <i class="fas fa-film"></i>
+        <p>No films available in this category yet.</p>
+        <a href="{% url 'core:home' %}" class="btn-browse">Browse other categories</a>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}
